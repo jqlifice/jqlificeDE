@@ -1,0 +1,353 @@
+@font-face {
+    font-family: cmdFont;
+    src: url("/fonts/cmdFont.woff") format("woff");
+}
+
+
+body{
+    max-height: 100vh;
+    margin: 0;
+    background-color: black;
+}
+
+#backgroundVideoWrapper{
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#backgroundVideo{
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+    opacity: 75%;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+@keyframes dimTheLight{
+    0% {opacity: 75%;}
+    100% {opacity: 30%;}
+}
+
+@keyframes raiseTheLight{
+    0% {opacity: 30%;}
+    100% {opacity: 75%;}
+}
+
+
+
+#buttonsBarRightWrapper{
+    max-width: 20%;
+    width: 20%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-content: center;
+}
+
+#buttonsBarRight{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: transparent;
+}
+
+
+#socials{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    height: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+
+.rightBarButton{
+    margin-left: 5px;
+    margin-right: 5px;
+    width: 30px;
+    height: 30px;
+}
+
+.rightBarIMG{
+    max-width: 100%;
+    max-height: 100%;
+    opacity: 70%;
+}
+
+.rightBarIMG:hover{
+    opacity: 100%;
+    animation-name: rightBarIMG;
+    animation-duration: 0.5s;
+}
+
+@keyframes rightBarIMG {
+    0% {opacity: 70%}
+    100% {opacity: 100%}
+}
+
+
+
+
+
+
+#page{
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    opacity: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+
+
+/*sliders*/
+#sliderContainerContainerLeft{
+    width: 20%;
+    max-width: 20%;
+    height:100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#sliderContainerLeft{
+    height: 45%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.sliderDiv{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    border-radius: 0 15px 15px 0;
+    height: 40px;
+    width: 40px;
+    background-color: #049DD9;
+}
+
+.sliderPreview{
+    margin-top: 3px;
+    margin-left: 1px;
+    max-width: 34px;
+    max-height: 34px;
+}
+
+.sliderText{
+    font-size: 25px;
+    color: transparent;
+}
+
+.sliderDiv:hover{
+    cursor: pointer;
+    animation-name: sliders;
+    animation-direction: normal;
+    animation-duration: 1s;
+    width: 200px;
+}
+
+.sliderDivClicked{
+    width: 200px;
+}
+
+@keyframes sliders{
+    0% {width: 50px;}
+    100% {width: 200px;}
+}
+
+
+.sliderDiv:hover .sliderPreview{
+    animation-name: sliderPreview;
+    animation-duration: 1s;
+    opacity: 0;
+}
+
+@keyframes sliderPreview {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+.sliderDiv:hover .sliderTextContainer .sliderText{
+    animation-name: sliderText;
+    animation-duration: 1.5s;
+    color: white;
+}
+
+@keyframes sliderText{
+    0%{color: transparent;}
+    50%{color: transparent;}
+    100%{color:white;}
+}
+
+.sliderDiv div{
+    align-self: center;
+    justify-self: center;
+}
+
+
+
+
+
+
+
+#contentWrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    max-height: 100%;
+    width: 65%;
+}
+
+#contentBox{
+    border-radius: 5px;
+    background-color: black;
+    opacity: 0%;
+    visibility: hidden;
+    height: 75%;
+    width: 95%;
+}
+
+#contentBoxHeader{
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    height: 3.5%;
+    width: 100%;
+    background-color: darkgray;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#contentBoxTitleContainer{
+    align-self: center;
+    height: 85%;
+    max-height: 85%;
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+    width: 40%;
+}
+
+#contentBoxTitle{
+    height: 100%;
+    max-height: 100%;
+    align-self: center;
+    background-color: white;
+    width: 70%;
+    text-align: left;
+}
+
+#contentBoxClose:hover{
+    cursor: pointer;
+}
+
+@keyframes openContentBox {
+    0% {visibility: hidden; opacity: 0%;}
+    100% {visibility: visible; opacity: 100%;}
+}
+
+@keyframes closeContentBox {
+    0% {visibility: visible; opacity: 100%;}
+    100% {visibility: hidden; opacity: 0%;}
+}
+
+#contentBoxLoadingBar{
+    height: 4px;
+    width: 0%;
+    visibility: hidden;
+    background: linear-gradient(90deg, rgba(0,245,255,1) 0%, rgba(202,8,208,1) 50%, rgba(171,0,255,1) 100%);
+}
+@keyframes loadPage{
+    0% {width:0%; visibility: visible;}
+    25% {width:40%; visibility: visible;}
+    50% {width:50%; visibility: visible;}
+    75% {width: 65%; visibility: visible;}
+    100% {width: 100%; visibility: visible;}
+}
+
+#contentBoxContent{
+    height: calc(96.5% - 8px);
+    max-height: calc(96.5% - 8px);
+}
+
+.contentBoxContentContainer{
+    height: 100%;
+    max-height: 100%;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+#contentBoxWhoAmI{
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: space-around;
+    height: 100%;
+    width: 100%;
+}
+#contentBoxWhoAmIIMGWrapper{
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    height: 100%;
+    width: 50%;
+}
+#contentBoxWhoAmITextWrapper{
+    width: 50%;
+    height: 100%;
+    margin-right: 2%;
+    overflow: auto;
+}
+.whoAmITitle{
+    font-family: cmdFont;
+    color: white;
+    font-size: 35px;
+}
+.whoAmIText{
+    font-family: sans-serif;
+    color: white;
+    font-size: 15px;
+}
+
+
+#contentBoxCredits{
+    display:flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+}
+.creditsText{
+    color: white;
+    font-size: 15px;
+}
+
+#contentBox404{
+    display:flex;
+    align-content: center;
+    justify-content: center;
+}
+.notFoundText{
+    align-self: center;
+    color: white;
+    font-size: 15px;
+}

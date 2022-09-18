@@ -1,17 +1,154 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr" class="sid-plesk">
+<html lang="en">
 <head>
     <title>JQLiFiCE</title>
     <meta name="copyright" content="Jonas aka JQLiFiCE">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-    <meta http-equiv="Cache-Control" content="no-cache">
     <link rel="shortcut icon" href="favicon.ico">
     <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
+    <div id="backgroundVideoWrapper">
+        <video id="backgroundVideo" disablePictureInPicture playsinline autoplay muted loop>
+            <source src="vid/background.mp4" type="video/mp4">
+        </video>
+        <div id="page">
+            <div id="sliderContainerContainerLeft">
+                <div id="sliderContainerLeft">
+                    <div id="sliderWhoAmI" class="sliderDiv">
+                        <img class="sliderPreview" src="img/whoAmI.png">
+                        <div class="sliderTextContainer">
+                            <b class="sliderText">WhoAmI</b>
+                        </div>
+                    </div>
+                    <div id="sliderYoutube" class="sliderDiv">
+                        <img class="sliderPreview" src="img/youtubeIcon.png">
+                        <div class="sliderTextContainer">
+                            <b class="sliderText">YouTube</b>
+                        </div>
+                    </div>
+                    <div id="sliderProgram" class="sliderDiv">
+                        <img class="sliderPreview" src="img/program.png">
+                        <div class="sliderTextContainer">
+                            <b class="sliderText">Programming</b>
+                        </div>
+                    </div>
+                    <div id="sliderCSGO" class="sliderDiv">
+                        <img class="sliderPreview" src="img/csgo.png">
+                        <div class="sliderTextContainer">
+                            <b class="sliderText">E-Sports</b>
+                        </div>
+                    </div>
+                    <div id="sliderYugi" class="sliderDiv">
+                        <img class="sliderPreview" src="img/yugi.png">
+                        <div class="sliderTextContainer">
+                            <b class="sliderText">Yu-Gi-Oh!</b>
+                        </div>
+                    </div>
+                    <div id="sliderGaming" class="sliderDiv">
+                        <img class="sliderPreview" src="img/gaming.png">
+                        <div class="sliderTextContainer">
+                            <b class="sliderText">Gaming</b>
+                        </div>
+                    </div>
+                    <div id="sliderMusic" class="sliderDiv">
+                        <img class="sliderPreview" src="img/music.png">
+                        <div class="sliderTextContainer">
+                            <b class="sliderText">Music</b>
+                        </div>
+                    </div>
+                    <div id="sliderCredits" class="sliderDiv">
+                        <img class="sliderPreview" src="img/credits.png">
+                        <div class="sliderTextContainer">
+                            <b class="sliderText">Credits etc.</b>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="contentWrapper">
+                <div id="contentBox">
+                    <div id="contentBoxHeader">
+                        <div id="contentBoxTitleContainer">
+                            <img id="contentBoxBack" src="img/leftArrow.png" style="margin-left:1%; margin-right:1%; opacity: 20%;">
+                            <img id="contentBoxForward" src="img/rightArrow.png" style="margin-left:1%; margin-right:1%; opacity: 20%;">
+                            <img id="contentBoxReload" src="img/reload.png" style="margin-left:1%; margin-right:1%; cursor: pointer;">
+                            <div id="contentBoxTitle" style="padding-top:2.5%; padding-bottom:2%; padding-left:1%; font-size: 14px;">
 
+                            </div>
+                        </div>
+                        <img id="contentBoxClose" src="img/close.png" style="margin-right: 2px">
+                    </div>
+                    <div id="contentBoxLoadingBar"></div>
+                    <div id="contentBoxContent">
+                        <div id="contentBoxWhoAmI"  class="contentBoxContentContainer">
+                            <div id="contentBoxWhoAmIIMGWrapper">
+                                <img id="contentBoxWhoAmIIMG" style="max-height: 100%; height: 100%;" src="img/aboutMeImage.png">
+                            </div>
+                            <div id="contentBoxWhoAmITextWrapper">
+                                <b class="whoAmITitle">Hi, I am Jonas aka JQLiFiCE</b> <br>
+                                <b class="whoAmIText">a 22-year-old CS student at OTH Regensburg, partaking in an integrated degree program.</b><br>
+                                <b class="whoAmIText">My practicum phases are spent at the department managing the datacenter of the city administration of Regensburg.</b><br>
+                                <b class="whoAmIText">I am looking to acquire my bachelors degree in early 2023. The topic of my thesis being the conceptualization and implementation of a system for secure execution of VBA-macros in a Windows Domain environment.</b><br>
+                                <b class="whoAmIText">You can find more information on my computer science background under the programming tab.</b><br>
+                                <br>
+                                <b class="whoAmIText">In my time off work and uni I do a lot of different stuff, witch a small selection being presented in their own tabs. </b><br>
+                                <br>
+                                <b class="whoAmIText">If you would like to get to know me better my social media and other public profiles are linked on the right hand side. Looking forward to your visit :)</b><br>
+                                <b class="whoAmIText">You can contact me on all of these platforms or via email: <a href="mailto:mail@jqlifice.de">mail@jqlifice.de</a></b><br>
+                                <br>
+                                <b class="whoAmIText">cya :)</b>
+                            </div>
+                        </div>
+                        <div id="contentBoxYouTube"  class="contentBoxContentContainer">
 
+                        </div>
+
+                        <div id="contentBoxCredits" class="contentBoxContentContainer">
+                            <b class="creditsText">Hey, glad you're looking into this </b> <br>
+                            <b class="creditsText">The people who created the stuff I used on my website deserve the credit after all :)</b> <br>
+                            <br>
+                            <b class="creditsText" style="margin:10px;">Icons by <a target="_blank" rel="noopener noreferrer" href="https://icons8.com">Icons8</a> </b> <br>
+                            <br>
+                            <b class="creditsText" style="margin-top:20%; font-size: 10px;">Yes the credit page is also still WIP :D</b> <br>
+                            <b class="creditsText" style="font-size: 10px;">If you want to get involved or are interested in how I did this check out this site's <a target="_blank" rel="noopener noreferrer" href="https://github.com/jqlifice/jqlificeDE">GitHub repo</a>. :)</b> <br>
+                        </div>
+                        <div id="contentBox404"  class="contentBoxContentContainer">
+                            <b class="notFoundText">This Page does not exist (yet), yes this entire thing is still WIP :)</b>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="buttonsBarRightWrapper">
+                <div id="buttonsBarRight">
+                    <div id="socials">
+                        <div class="rightBarButton">
+                            <a href="https://www.youtube.com/c/JQLiFiCE/" target="_blank" rel="noopener noreferrer"><img class="rightBarIMG" src="img/youtube.png"></a>
+                        </div>
+                        <div class="rightBarButton">
+                            <a href="https://www.instagram.com/jqlifice/" target="_blank" rel="noopener noreferrer"><img class="rightBarIMG" src="img/Instagram.png"></a>
+                        </div>
+                        <div class="rightBarButton">
+                            <a href="https://open.spotify.com/user/1163600141" target="_blank" rel="noopener noreferrer"><img class="rightBarIMG" src="img/spotify.webp"></a>
+                        </div>
+                        <div class="rightBarButton">
+                            <a href="https://discord.gg/Puun8Ra" target="_blank" rel="noopener noreferrer"><img class="rightBarIMG" src="img/discord.png"></a>
+                        </div>
+                        <div class="rightBarButton">
+                            <a href="https://steamcommunity.com/id/jqlifice" target="_blank" rel="noopener noreferrer"><img class="rightBarIMG" src="img/steam.png"></a>
+                        </div>
+                        <div class="rightBarButton">
+                            <a href="https://twitter.com/jqlifice" target="_blank" rel="noopener noreferrer"><img class="rightBarIMG" src="img/twitter.png"></a>
+                        </div>
+                        <div class="rightBarButton">
+                            <a href="https://github.com/jqlifice" target="_blank" rel="noopener noreferrer"><img class="rightBarIMG" src="img/github.png"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
+<script src="js/index.js"></script>
 </html>
