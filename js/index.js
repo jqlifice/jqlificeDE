@@ -34,6 +34,13 @@ document.getElementById("contentBoxForward").onclick = function (){
         loadPage(contentBoxHistory[++contentBoxHistoryCurrentIndex], false, true);
     }
 };
+//adressbar submit
+document.getElementById("contentBoxTitleWrapper").addEventListener('submit', e => {
+    e.preventDefault();
+    const regex = /((http(s|):\/\/)|)((www.)|)jqlifice.de\//gis
+    let calledPage = e.target[0].value.replace(regex, "");
+    loadPage(calledPage, false, false, e.target[0].value);
+});
 
 
 //checks weather the contentBox is open, if it isn't prepareContent() darkens the background video and opens the content box; also prepareContent() clears the content(regardless of the box being open)
@@ -59,7 +66,7 @@ function prepareContent (){
 }
 
 //loads the in pageID specified page into the contentBox; reload prevents any interaction with the history; inHistory stops from overwriting history
-function loadPage(pageID, reload, inHistory){
+function loadPage(pageID, reload, inHistory, setURL){
     //updating history to allow using back and forward arrows to navigate
     if(!reload && !inHistory){
         if(contentBoxHistoryCurrentIndex<contentBoxHistory.length-1){
@@ -71,7 +78,11 @@ function loadPage(pageID, reload, inHistory){
     }
     prepareContent();
     contentBoxContent.style.visibility="hidden";
-    document.getElementById("contentBoxTitle").innerHTML = "https://jqlifice.de/"+pageID;
+    if(setURL){
+        document.getElementById("contentBoxTitle").value = setURL;
+    }else{
+        document.getElementById("contentBoxTitle").value = "https://jqlifice.de/".concat(pageID);
+    }
     let loadingBar = document.getElementById("contentBoxLoadingBar");
     loadingBar.style.animation="none";
     setTimeout(function(){
@@ -88,12 +99,12 @@ function loadPage(pageID, reload, inHistory){
     },1000)
     setTimeout(function(){
         switch(pageID){
-            case "whoAmI":
+            case "WhoAmI":
                     document.getElementById("contentBoxWhoAmI").style.display="flex";
                     document.getElementById("contentBoxWhoAmI").style.visibility="visible";
                 break;
 
-            case "credits":
+            case "Credits":
                     document.getElementById("contentBoxCredits").style.display="flex";
                     document.getElementById("contentBoxCredits").style.visibility="visible";
                 break;
@@ -121,38 +132,36 @@ function loadPage(pageID, reload, inHistory){
         document.getElementById("contentBoxForward").style.opacity="20%";
         document.getElementById("contentBoxForward").style.cursor="auto";
     }
+
+    //update slider
+    console.log("slider".concat(pageID));
+    let slider = document.getElementById("slider".concat(pageID));
+    if(slider) slider.classList.add("sliderDivClicked")
+
 }
 
 //sliders On Click
 document.getElementById("sliderWhoAmI").onclick = function (){
-    loadPage("whoAmI", false, false);
-    this.classList.add("sliderDivClicked");
+    loadPage("WhoAmI", false, false);
 };
 document.getElementById("sliderYoutube").onclick = function (){
-    loadPage("youtube", false, false);
-    this.classList.add("sliderDivClicked");
+    loadPage("Youtube", false, false);
 };
 document.getElementById("sliderProgram").onclick = function (){
-    loadPage("program", false, false);
-    this.classList.add("sliderDivClicked");
+    loadPage("Program", false, false);
 };
 document.getElementById("sliderCSGO").onclick = function (){
-    loadPage("csgo", false, false);
-    this.classList.add("sliderDivClicked");
+    loadPage("CSGO", false, false);
 };
 document.getElementById("sliderYugi").onclick = function (){
-    loadPage("yugi", false, false);
-    this.classList.add("sliderDivClicked");
+    loadPage("Yugi", false, false);
 };
 document.getElementById("sliderGaming").onclick = function (){
-    loadPage("gaming", false, false);
-    this.classList.add("sliderDivClicked");
+    loadPage("Gaming", false, false);
 };
 document.getElementById("sliderMusic").onclick = function (){
-    loadPage("music", false, false);
-    this.classList.add("sliderDivClicked");
+    loadPage("Music", false, false);
 };
 document.getElementById("sliderCredits").onclick = function (){
-    loadPage("credits", false, false);
-    this.classList.add("sliderDivClicked");
+    loadPage("Credits", false, false);
 };
