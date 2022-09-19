@@ -1,14 +1,14 @@
 let contentBox = document.getElementById("contentBox");
 let contentBoxContent = document.getElementById("contentBoxContent");
 let contentBoxOpen = false;
-let contentBoxHistory = new Array();
+let contentBoxHistory = [];
 let contentBoxHistoryCurrentIndex = -1;
 let sliders = document.querySelectorAll(".sliderDiv");
 
 //control elements contentBox
 document.getElementById("contentBoxClose").onclick = function(){
     prepareContent();
-    contentBoxHistory=new Array();
+    contentBoxHistory=[];
     contentBoxHistoryCurrentIndex=-1;
     contentBox.style.animationDelay="1s";
     contentBox.style.animation="closeContentBox 1s";
@@ -26,12 +26,12 @@ document.getElementById("contentBoxReload").onclick = function(){
 };
 document.getElementById("contentBoxBack").onclick = function(){
     if(contentBoxHistoryCurrentIndex>0){
-        loadPage(contentBoxHistory[contentBoxHistoryCurrentIndex--], false, true);
+        loadPage(contentBoxHistory[--contentBoxHistoryCurrentIndex], false, true);
     }
 };
 document.getElementById("contentBoxForward").onclick = function (){
     if(contentBoxHistoryCurrentIndex<contentBoxHistory.length-1){
-        loadPage(contentBoxHistory[contentBoxHistoryCurrentIndex++], false, true);
+        loadPage(contentBoxHistory[++contentBoxHistoryCurrentIndex], false, true);
     }
 };
 
@@ -44,6 +44,9 @@ function prepareContent (){
             childNodesContentBox[i].style.display="none";
         }
     }
+    sliders.forEach(function(slider){
+        slider.classList.remove("sliderDivClicked");
+    });
     if(!contentBoxOpen){
         contentBox.style.animationDelay="1s";
         contentBox.style.animation="openContentBox 1s";
@@ -51,9 +54,6 @@ function prepareContent (){
         contentBox.style.opacity="100%";
         document.getElementById("backgroundVideo").style.animation="dimTheLight 2s";
         document.getElementById("backgroundVideo").style.opacity="30%";
-        sliders.forEach(function(slider){
-           slider.classList.remove("sliderDivClicked");
-        });
         contentBoxOpen = true;
     }
 }
@@ -125,34 +125,34 @@ function loadPage(pageID, reload, inHistory){
 
 //sliders On Click
 document.getElementById("sliderWhoAmI").onclick = function (){
-    this.classList.add("sliderDivClicked");
     loadPage("whoAmI", false, false);
+    this.classList.add("sliderDivClicked");
 };
 document.getElementById("sliderYoutube").onclick = function (){
-    this.classList.add("sliderDivClicked");
     loadPage("youtube", false, false);
+    this.classList.add("sliderDivClicked");
 };
 document.getElementById("sliderProgram").onclick = function (){
-    this.classList.add("sliderDivClicked");
     loadPage("program", false, false);
+    this.classList.add("sliderDivClicked");
 };
 document.getElementById("sliderCSGO").onclick = function (){
-    this.classList.add("sliderDivClicked");
     loadPage("csgo", false, false);
+    this.classList.add("sliderDivClicked");
 };
 document.getElementById("sliderYugi").onclick = function (){
-    this.classList.add("sliderDivClicked");
     loadPage("yugi", false, false);
+    this.classList.add("sliderDivClicked");
 };
 document.getElementById("sliderGaming").onclick = function (){
-    this.classList.add("sliderDivClicked");
     loadPage("gaming", false, false);
+    this.classList.add("sliderDivClicked");
 };
 document.getElementById("sliderMusic").onclick = function (){
-    this.classList.add("sliderDivClicked");
     loadPage("music", false, false);
+    this.classList.add("sliderDivClicked");
 };
 document.getElementById("sliderCredits").onclick = function (){
-    this.classList.add("sliderDivClicked");
     loadPage("credits", false, false);
+    this.classList.add("sliderDivClicked");
 };
