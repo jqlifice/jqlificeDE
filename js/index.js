@@ -104,6 +104,11 @@ function loadPage(pageID, reload, inHistory, setURL){
                     document.getElementById("contentBoxWhoAmI").style.visibility="visible";
                 break;
 
+            case "Youtube":
+                    document.getElementById("contentBoxYouTube").style.display="grid";
+                    document.getElementById("contentBoxYouTube").style.visibility="visible";
+                break;
+
             case "Credits":
                     document.getElementById("contentBoxCredits").style.display="flex";
                     document.getElementById("contentBoxCredits").style.visibility="visible";

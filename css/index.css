@@ -3,6 +3,13 @@
     src: url("/fonts/cmdFont.woff") format("woff");
 }
 
+a:link{
+    color: #049DD9;
+}
+a:visited{
+    color: #049DD9;
+}
+
 
 body{
     max-height: 100vh;
@@ -344,6 +351,26 @@ body{
     font-size: calc(10px + (26 - 10) * ((100vw - 300px) / (4000 - 300)));
 }
 
+#contentBoxYouTube{
+    display: grid;
+    place-items: center;
+    background-image: url("/img/youtubeChannelJQLiFiCE.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+#contentBoxYouTubeTextWrapper{
+    padding: 1%;
+    width: 80%;
+    height: 87.5%;
+    background: rgba(0, 0, 0, 95%);
+    overflow-y: auto;
+}
+.youtubeText{
+    font-family: serif;
+    color: white;
+    font-size: calc(14px + (20 - 14) * ((100vw - 300px) / (4000 - 300)));
+}
 
 #contentBoxCredits{
     display:flex;
@@ -352,6 +379,7 @@ body{
     justify-content: center;
 }
 .creditsText{
+    font-family: serif;
     color: white;
     font-size: calc(15px + (26 - 15) * ((100vw - 300px) / (4000 - 300)));
 }
