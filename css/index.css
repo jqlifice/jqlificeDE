@@ -147,7 +147,8 @@ body{
 }
 
 .sliderText{
-    font-size: 25px;
+    font-family: sans-serif;
+    font-size: calc(8px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
     color: transparent;
 }
 
@@ -306,11 +307,15 @@ body{
     width: 100%;
 }
 #contentBoxWhoAmIIMGWrapper{
-    display: flex;
-    align-content: center;
-    justify-content: center;
-    height: 100%;
-    width: 50%;
+    display: grid;
+    place-items: center;
+    max-height: 100%;
+    max-width: 50%;
+}
+#contentBoxWhoAmIIMG{
+    max-height: 100%;
+    max-width: 100%;
+    height: auto;
 }
 #contentBoxWhoAmITextWrapper{
     width: 50%;
@@ -321,12 +326,12 @@ body{
 .whoAmITitle{
     font-family: cmdFont;
     color: white;
-    font-size: 35px;
+    font-size: calc(30px + (56 - 30) * ((100vw - 300px) / (4000 - 300)));
 }
 .whoAmIText{
     font-family: sans-serif;
     color: white;
-    font-size: 15px;
+    font-size: calc(10px + (26 - 10) * ((100vw - 300px) / (4000 - 300)))
 }
 
 
@@ -338,7 +343,7 @@ body{
 }
 .creditsText{
     color: white;
-    font-size: 15px;
+    font-size: 25px;
 }
 
 #contentBox404{
