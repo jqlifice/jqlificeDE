@@ -331,7 +331,7 @@ body{
 .whoAmIText{
     font-family: sans-serif;
     color: white;
-    font-size: calc(10px + (26 - 10) * ((100vw - 300px) / (4000 - 300)))
+    font-size: calc(10px + (26 - 10) * ((100vw - 300px) / (4000 - 300)));
 }
 
 
@@ -343,7 +343,7 @@ body{
 }
 .creditsText{
     color: white;
-    font-size: 25px;
+    font-size: calc(15px + (26 - 15) * ((100vw - 300px) / (4000 - 300)));
 }
 
 #contentBox404{
@@ -354,5 +354,5 @@ body{
 .notFoundText{
     align-self: center;
     color: white;
-    font-size: 15px;
+    font-size: calc(15px + (26 - 15) * ((100vw - 300px) / (4000 - 300)));
 }
