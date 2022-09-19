@@ -4,9 +4,12 @@
 }
 
 a:link{
-    color: #049DD9;
+    color: #528CE0;
 }
 a:visited{
+    color: #528CE0;
+}
+a:hover{
     color: #049DD9;
 }
 
@@ -154,6 +157,7 @@ body{
 }
 
 .sliderText{
+    display: none;
     font-family: sans-serif;
     font-size: calc(8px + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
     color: transparent;
@@ -168,7 +172,7 @@ body{
 }
 
 .sliderDivClicked{
-    width: 200px;
+    width: 80px;
 }
 
 @keyframes sliders{
@@ -193,6 +197,7 @@ body{
 }
 
 .sliderDiv:hover .sliderTextContainer .sliderText{
+    display: block;
     animation-name: sliderText;
     animation-duration: 1.5s;
     color: white;
