@@ -10,7 +10,6 @@ let currentLine,
     shellBackgroundColor,
     shellTextColor,
     shellDirectoryTreeRoot,
-    shellPath,
     cwd;
 
 function folder(name, parent){
@@ -199,6 +198,7 @@ function exec(commandIn){
         case "color": shellColor(args[0]); break;
         case "dir": shellDIR(); break;
         case "exit": document.getElementById("contentBoxClose").click(); break;
+        case "fsize": shellFSIZE(args[0]); break;
         case "help": shellHelp(args[0]); break;
         case "mkdir": case "md": shellMkdir(args[0]); break;
         case "print": shellPrint(args[0]); break;
@@ -276,10 +276,18 @@ function shellColor(args){
                 case 'd': colorArray[i]="mediumpurple"; break;
                 case 'e': colorArray[i]="yellow"; break;
                 case 'f': colorArray[i]="white"; break;
+                default: colorArray[i]=null; break;
             }
         }
     }else if(args.length == 0){
         colorArray = ['black', 'floralwhite'];
+    }
+
+    if(colorArray[0] != colorArray[1] && colorArray[0]!=null && colorArray[1]!=null){
+        shellBackgroundColor = colorArray[0];
+        shellTextColor = colorArray[1];
+        canvas.style.backgroundColor = shellBackgroundColor;
+        document.getElementById("contentBoxInteractiveShellWrapper").style.backgroundColor = shellBackgroundColor;
     }else{
         canvasContent.push({text: "COLOR [arg]", isInput:false, inDir:cwd.path()});
         canvasContent.push({text: "    arg    specifies the colors of the console", isInput:false, inDir:cwd.path()});
@@ -299,13 +307,6 @@ function shellColor(args){
         canvasContent.push({text: "Example: 'color 05' produces purple text on a black background", isInput:false, inDir:cwd.path()});
         canvasContent.push({text: "Note: no specified arg resets the layout to black background with white text", isInput:false, inDir:cwd.path()});
         currentLine = currentLine+17;
-    }
-
-    if(colorArray[0] != colorArray[1]){
-        shellBackgroundColor = colorArray[0];
-        shellTextColor = colorArray[1];
-        canvas.style.backgroundColor = shellBackgroundColor;
-        document.getElementById("contentBoxInteractiveShellWrapper").style.backgroundColor = shellBackgroundColor;
     }
 }
 
@@ -328,19 +329,25 @@ function shellDIR(){
     currentLine = currentLine+2;
 }
 
+function shellFSIZE(newSize){
+    if(newSize>=10&&newSize<=30) shellLineHeight=newSize;
+    if(newSize === undefined) shellLineHeight=20;
+}
+
 function shellHelp(){
     canvasContent.push({text:"list of available commands:", isInput:false, inDir:cwd.path()});
-    canvasContent.push({text:"    CD - Changes the current working directory. Syntax: CD [target directory]", isInput:false, inDir:cwd.path()});
-    canvasContent.push({text:"    CLS - Clears the history of the CLI. Syntax: CLS", isInput:false, inDir:cwd.path()});
-    canvasContent.push({text:"    COLOR - Clears the colors of the CLI. Syntax: COLOR [colors]", isInput:false, inDir:cwd.path()});
-    canvasContent.push({text:"    DIR - Displays contents of cwd. Syntax: DIR", isInput:false, inDir:cwd.path()});
-    canvasContent.push({text:"    EXIT - Exits the current CLI. Syntax: EXIT", isInput:false, inDir:cwd.path()});
-    canvasContent.push({text:"    HELP - prints this page. Syntax: HELP", isInput:false, inDir:cwd.path()});
-    canvasContent.push({text:"    MKDIR - Creates a new folder with the specified name. Syntax: MKDIR [name]", isInput:false, inDir:cwd.path()});
-    canvasContent.push({text:"    PRINT - Prints file contents to the CLI. Syntax: PRINT [file]", isInput:false, inDir:cwd.path()});
-    canvasContent.push({text:"    RESET - resets the CLI (basically equivalent to reloading). Syntax: RESET", isInput:false, inDir:cwd.path()});
-    canvasContent.push({text:"    TREE - prints the filesystem structure below CWD. Syntax: TREE", isInput:false, inDir:cwd.path()});
-    currentLine = currentLine+11;
+    canvasContent.push({text:"CD - Changes the current working directory. Syntax: CD [target directory]", isInput:false, inDir:cwd.path()});
+    canvasContent.push({text:"CLS - Clears the history of the CLI. Syntax: CLS", isInput:false, inDir:cwd.path()});
+    canvasContent.push({text:"COLOR - Clears the colors of the CLI. Syntax: COLOR [colors]", isInput:false, inDir:cwd.path()});
+    canvasContent.push({text:"DIR - Displays contents of cwd. Syntax: DIR", isInput:false, inDir:cwd.path()});
+    canvasContent.push({text:"EXIT - Exits the current CLI. Syntax: EXIT", isInput:false, inDir:cwd.path()});
+    canvasContent.push({text:"FSIZE - Changes the current font size. Accepts values between 10 and 30. If empty it resets to default. Syntax: FSIZE [new Size]", isInput:false, inDir:cwd.path()});
+    canvasContent.push({text:"HELP - prints this page. Syntax: HELP", isInput:false, inDir:cwd.path()});
+    canvasContent.push({text:"MKDIR - Creates a new folder with the specified name. Syntax: MKDIR [name]", isInput:false, inDir:cwd.path()});
+    canvasContent.push({text:"PRINT - Prints file contents to the CLI. Syntax: PRINT [file]", isInput:false, inDir:cwd.path()});
+    canvasContent.push({text:"RESET - resets the CLI (basically equivalent to reloading). Syntax: RESET", isInput:false, inDir:cwd.path()});
+    canvasContent.push({text:"TREE - prints the filesystem structure below CWD. Syntax: TREE", isInput:false, inDir:cwd.path()});
+    currentLine = currentLine+12;
 }
 
 function shellMkdir(name){
