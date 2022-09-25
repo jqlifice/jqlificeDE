@@ -42,9 +42,37 @@ document.getElementById("contentBoxTitleWrapper").addEventListener('submit', e =
     loadPage(calledPage, false, false, e.target[0].value);
 });
 
+//sliders On Click
+document.getElementById("sliderWhoAmI").onclick = function (){
+    loadPage("WhoAmI", false, false);
+};
+document.getElementById("sliderYoutube").onclick = function (){
+    loadPage("Youtube", false, false);
+};
+document.getElementById("sliderProgram").onclick = function (){
+    loadPage("Program", false, false);
+};
+document.getElementById("sliderCSGO").onclick = function (){
+    loadPage("CSGO", false, false);
+};
+document.getElementById("sliderYugi").onclick = function (){
+    loadPage("Yugi", false, false);
+};
+document.getElementById("sliderGaming").onclick = function (){
+    loadPage("Gaming", false, false);
+};
+document.getElementById("sliderMusic").onclick = function (){
+    loadPage("Music", false, false);
+};
+document.getElementById("sliderCredits").onclick = function (){
+    loadPage("Credits", false, false);
+};
+
+
 
 //checks weather the contentBox is open, if it isn't prepareContent() darkens the background video and opens the content box; also prepareContent() clears the content(regardless of the box being open)
 function prepareContent (){
+    destroyShell();
     let childNodesContentBox = document.getElementById("contentBoxContent").childNodes;
     for(let i=0; i<childNodesContentBox.length; i++){
         if(childNodesContentBox[i].nodeName.toLowerCase()==="div"){
@@ -64,6 +92,7 @@ function prepareContent (){
         contentBoxOpen = true;
     }
 }
+
 
 //loads the in pageID specified page into the contentBox; reload prevents any interaction with the history; inHistory stops from overwriting history
 function loadPage(pageID, reload, inHistory, setURL){
@@ -109,6 +138,12 @@ function loadPage(pageID, reload, inHistory, setURL){
                     document.getElementById("contentBoxYouTube").style.visibility="visible";
                 break;
 
+            case "Program":
+                    document.getElementById("contentBoxProgram").style.display="block";
+                    document.getElementById("contentBoxProgram").style.visibility="visible";
+                    createShell();
+                break;
+
             case "Credits":
                     document.getElementById("contentBoxCredits").style.display="flex";
                     document.getElementById("contentBoxCredits").style.visibility="visible";
@@ -139,34 +174,7 @@ function loadPage(pageID, reload, inHistory, setURL){
     }
 
     //update slider
-    console.log("slider".concat(pageID));
     let slider = document.getElementById("slider".concat(pageID));
     if(slider) slider.classList.add("sliderDivClicked")
 
 }
-
-//sliders On Click
-document.getElementById("sliderWhoAmI").onclick = function (){
-    loadPage("WhoAmI", false, false);
-};
-document.getElementById("sliderYoutube").onclick = function (){
-    loadPage("Youtube", false, false);
-};
-document.getElementById("sliderProgram").onclick = function (){
-    loadPage("Program", false, false);
-};
-document.getElementById("sliderCSGO").onclick = function (){
-    loadPage("CSGO", false, false);
-};
-document.getElementById("sliderYugi").onclick = function (){
-    loadPage("Yugi", false, false);
-};
-document.getElementById("sliderGaming").onclick = function (){
-    loadPage("Gaming", false, false);
-};
-document.getElementById("sliderMusic").onclick = function (){
-    loadPage("Music", false, false);
-};
-document.getElementById("sliderCredits").onclick = function (){
-    loadPage("Credits", false, false);
-};

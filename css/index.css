@@ -243,7 +243,7 @@ body{
 #contentBoxHeader{
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
-    height: 3.5%;
+    height: 25px;
     width: 100%;
     background-color: darkgray;
     display: flex;
@@ -258,7 +258,8 @@ body{
     display: flex;
     flex-direction: row;
     overflow: hidden;
-    width: 40%;
+    width: calc(350px + (800 - 350) * ((100vw - 300px) / (4000 - 300)));
+    max-width: 95%;
 }
 
 #contentBoxTitleWrapper{
@@ -295,7 +296,7 @@ body{
 }
 
 #contentBoxLoadingBar{
-    height: 4px;
+    height: 5px;
     width: 0%;
     visibility: hidden;
     background: linear-gradient(90deg, rgba(0,245,255,1) 0%, rgba(202,8,208,1) 50%, rgba(171,0,255,1) 100%);
@@ -309,8 +310,8 @@ body{
 }
 
 #contentBoxContent{
-    height: calc(96.5% - 8px);
-    max-height: calc(96.5% - 8px);
+    height: calc(100% - 30px);
+    max-height: calc(100% - 30px);
 }
 
 .contentBoxContentContainer{
@@ -376,6 +377,13 @@ body{
     font-family: serif;
     color: white;
     font-size: calc(14px + (20 - 14) * ((100vw - 300px) / (4000 - 300)));
+}
+
+#contentBoxInteractiveShellWrapper{
+    height: 100%;
+    background-color: black;
+    overflow-x: auto;
+    overflow-y: hidden;
 }
 
 #contentBoxCredits{
