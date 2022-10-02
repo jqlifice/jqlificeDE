@@ -281,6 +281,10 @@ body{
     font-size: calc(5px + (15 - 5) * ((100vw - 300px) / (4000 - 300)));
 }
 
+#contentBoxTitle:focus{
+    outline: none;
+}
+
 #contentBoxClose:hover{
     cursor: pointer;
 }
@@ -310,6 +314,8 @@ body{
 }
 
 #contentBoxContent{
+    width: 100%;
+    max-width: 100%;
     height: calc(100% - 30px);
     max-height: calc(100% - 30px);
 }
@@ -359,25 +365,57 @@ body{
 }
 
 #contentBoxYouTube{
+    height: 90%;
+    width: 90%;
+    padding: 5% 5%;
     display: grid;
     place-items: center;
+    gap: 10% 5%;
     background-image: url("/img/youtubeChannelJQLiFiCE.png");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
 }
-#contentBoxYouTubeTextWrapper{
-    padding: 1%;
-    width: 80%;
-    height: 87.5%;
-    background: rgba(0, 0, 0, 95%);
-    overflow-y: auto;
+.contentBoxYouTubeThumbContainer{
+    position: relative;
 }
-.youtubeText{
-    font-family: serif;
-    color: white;
-    font-size: calc(14px + (20 - 14) * ((100vw - 300px) / (4000 - 300)));
+.contentBoxYouTubeThumbContainer:hover{
+    cursor: pointer;
 }
+.contentBoxYouTubePlay{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.contentBoxYouTubeThumb{
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+    object-position: center;
+}
+#contentBoxYouTubeThumbContainerLPALLNIGHT{
+    grid-column: 1;
+    grid-row: 1;
+}
+#contentBoxYouTubeThumbContainerNaturNerd{
+    grid-column: 2;
+    grid-row: 1;
+}
+#contentBoxYouTubeThumbContainerJQLiFiCE1{
+    grid-column-start: 1;
+    grid-row-start: 2;
+}
+#contentBoxYouTubeThumbContainerJQLiFiCE2{
+    grid-column-start: 2;
+    grid-row-start: 2;
+}
+
+.contentBoxPlayVideo{
+    height: 100%;
+    width: 100%;
+}
+
 
 #contentBoxInteractiveShellWrapper{
     height: 100%;

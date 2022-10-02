@@ -96,6 +96,12 @@ function prepareContent (){
 
 //loads the in pageID specified page into the contentBox; reload prevents any interaction with the history; inHistory stops from overwriting history
 function loadPage(pageID, reload, inHistory, setURL){
+    if(pageID !== "Play"){
+        let playContainer = document.getElementById("contentBoxPlay");
+        while(playContainer.firstChild){
+            playContainer.removeChild(playContainer.firstChild);
+        }
+    }
     //updating history to allow using back and forward arrows to navigate
     if(!reload && !inHistory){
         if(contentBoxHistoryCurrentIndex<contentBoxHistory.length-1){
@@ -147,6 +153,16 @@ function loadPage(pageID, reload, inHistory, setURL){
             case "Credits":
                     document.getElementById("contentBoxCredits").style.display="flex";
                     document.getElementById("contentBoxCredits").style.visibility="visible";
+                break;
+
+            case "Play":
+                    if(!document.getElementById("contentBoxPlay").firstChild){
+                        document.getElementById("contentBox404").style.display="flex";
+                        document.getElementById("contentBox404").style.visibility="visible";
+                    }else{
+                        document.getElementById("contentBoxPlay").style.display="grid";
+                        document.getElementById("contentBoxPlay").style.visibility="visible";
+                    }
                 break;
 
             default:
