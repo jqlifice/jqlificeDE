@@ -19,6 +19,10 @@ document.getElementById("contentBoxClose").onclick = function(){
     });
     document.getElementById("backgroundVideo").style.animation="raiseTheLight 2s";
     document.getElementById("backgroundVideo").style.opacity="75%";
+    let playContainer = document.getElementById("contentBoxPlay");
+    while(playContainer.firstChild){
+        playContainer.removeChild(playContainer.firstChild);
+    }
     contentBoxOpen = false;
 };
 document.getElementById("contentBoxReload").onclick = function(){
@@ -140,7 +144,7 @@ function loadPage(pageID, reload, inHistory, setURL){
                 break;
 
             case "Youtube":
-                    document.getElementById("contentBoxYouTube").style.display="grid";
+                    document.getElementById("contentBoxYouTube").style.display="flex";
                     document.getElementById("contentBoxYouTube").style.visibility="visible";
                 break;
 

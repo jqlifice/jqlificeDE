@@ -347,9 +347,16 @@ body{
     max-width: 100%;
     height: auto;
 }
-#contentBoxWhoAmITextWrapper{
-    width: 50%;
+#contentBoxWhoAmITextWrapperWrapper{
     height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+#contentBoxWhoAmITextWrapper{
+    align-self: center;
+    width: 98%;
+    max-height: 100%;
     margin-right: 2%;
     overflow: auto;
 }
@@ -365,22 +372,31 @@ body{
 }
 
 #contentBoxYouTube{
-    height: 90%;
-    width: 90%;
-    padding: 5% 5%;
-    display: grid;
-    place-items: center;
-    gap: 10% 5%;
-    background-image: url("/img/youtubeChannelJQLiFiCE.png");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+}
+.contentBoxYouTubeRow{
+    margin-left: 20px;
+    margin-right: 20px;
+    height: 50%;
+    display: flex;
+    flex-direction: row;
 }
 .contentBoxYouTubeThumbContainer{
+    width: calc(50% - 16px);
+    margin: 0 8px 0 8px;
+    height: calc(100% - 10px);
     position: relative;
+    display: flex;
+    justify-content: center;
 }
 .contentBoxYouTubeThumbContainer:hover{
     cursor: pointer;
+}
+.contentBoxYouTubeThumbContainer:hover .contentBoxYouTubeThumb{
+    box-shadow: 0 0 20px lightseagreen;
 }
 .contentBoxYouTubePlay{
     position: absolute;
@@ -389,28 +405,13 @@ body{
     transform: translate(-50%, -50%);
 }
 .contentBoxYouTubeThumb{
-    height: 100%;
+    border: 2px lightseagreen solid;
+    align-self: center;
+    height: 95%;
     width: 100%;
-    object-fit: contain;
+    object-fit: cover;
     object-position: center;
 }
-#contentBoxYouTubeThumbContainerLPALLNIGHT{
-    grid-column: 1;
-    grid-row: 1;
-}
-#contentBoxYouTubeThumbContainerNaturNerd{
-    grid-column: 2;
-    grid-row: 1;
-}
-#contentBoxYouTubeThumbContainerJQLiFiCE1{
-    grid-column-start: 1;
-    grid-row-start: 2;
-}
-#contentBoxYouTubeThumbContainerJQLiFiCE2{
-    grid-column-start: 2;
-    grid-row-start: 2;
-}
-
 .contentBoxPlayVideo{
     height: 100%;
     width: 100%;
