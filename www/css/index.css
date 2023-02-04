@@ -1,6 +1,6 @@
 @font-face {
     font-family: cmdFont;
-    src: url("/www/fonts/cmdFont.woff") format("woff");
+    src: url("/fonts/cmdFont.woff") format("woff");
 }
 
 a:link{
