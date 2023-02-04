@@ -191,15 +191,22 @@ function exec(commandIn){
     let commandSplit = commandIn.split(" ");
     let command = commandSplit[0];
     let args = commandSplit.slice(1, commandSplit.length);
+    console.log(args);
     switch(command.toLowerCase()){
-        case "cd": shellCD(args[0]); break;
+        case "cd":
+            if(args.length==0) {
+                shellHelp("cd");
+            }else{
+                shellCD(args[0]);
+            }
+        break;
         case "cd..": shellCD(".."); break;
         case "cls": shellCLS(); break;
         case "color": shellColor(args[0]); break;
         case "dir": shellDIR(); break;
         case "exit": document.getElementById("contentBoxClose").click(); break;
         case "fsize": shellFSIZE(args[0]); break;
-        case "help": shellHelp(args[0]); break;
+        case "help": shellHelp(args[0].toLowerCase()); break;
         case "mkdir": case "md": shellMkdir(args[0]); break;
         case "print": shellPrint(args[0]); break;
         case "cmd": case "reset": loadVariableBaseValues(); shellCLS(); break;
@@ -331,78 +338,104 @@ function shellDIR(){
 
 function shellFSIZE(newSize){
     if(newSize>=10&&newSize<=30) shellLineHeight=newSize;
-    if(newSize === undefined) shellLineHeight=20;
+    else if(newSize === undefined) shellLineHeight=20;
+    else shellHelp("fsize");
 }
 
-function shellHelp(){
-    canvasContent.push({text:"list of available commands:", isInput:false, inDir:cwd.path()});
-    canvasContent.push({text:"CD - Changes the current working directory. Syntax: CD [target directory]", isInput:false, inDir:cwd.path()});
-    canvasContent.push({text:"CLS - Clears the history of the CLI. Syntax: CLS", isInput:false, inDir:cwd.path()});
-    canvasContent.push({text:"COLOR - Clears the colors of the CLI. Syntax: COLOR [colors]", isInput:false, inDir:cwd.path()});
-    canvasContent.push({text:"DIR - Displays contents of cwd. Syntax: DIR", isInput:false, inDir:cwd.path()});
-    canvasContent.push({text:"EXIT - Exits the current CLI. Syntax: EXIT", isInput:false, inDir:cwd.path()});
-    canvasContent.push({text:"FSIZE - Changes the current font size. Accepts values between 10 and 30. If empty it resets to default. Syntax: FSIZE [new Size]", isInput:false, inDir:cwd.path()});
-    canvasContent.push({text:"HELP - prints this page. Syntax: HELP", isInput:false, inDir:cwd.path()});
-    canvasContent.push({text:"MKDIR - Creates a new folder with the specified name. Syntax: MKDIR [name]", isInput:false, inDir:cwd.path()});
-    canvasContent.push({text:"PRINT - Prints file contents to the CLI. Syntax: PRINT [file]", isInput:false, inDir:cwd.path()});
-    canvasContent.push({text:"RESET - resets the CLI (basically equivalent to reloading). Syntax: RESET", isInput:false, inDir:cwd.path()});
-    canvasContent.push({text:"TREE - prints the filesystem structure below CWD. Syntax: TREE", isInput:false, inDir:cwd.path()});
-    currentLine = currentLine+12;
+function shellHelp(arg){
+    //if you read this comment please create a pull request to make this nicer, ty <3
+    switch(arg){
+        case "cd": canvasContent.push({text:"CD - Changes the current working directory. Syntax: CD [target directory]", isInput:false, inDir:cwd.path()}); break;
+        case "cls": canvasContent.push({text:"CLS - Clears the history of the CLI. Syntax: CLS", isInput:false, inDir:cwd.path()}); break;
+        case "color": canvasContent.push({text:"COLOR - Clears the colors of the CLI. Syntax: COLOR [colors]", isInput:false, inDir:cwd.path()}); break;
+        case "dir": canvasContent.push({text:"DIR - Displays contents of cwd. Syntax: DIR", isInput:false, inDir:cwd.path()}); break;
+        case "exit": canvasContent.push({text:"EXIT - Exits the current CLI. Syntax: EXIT", isInput:false, inDir:cwd.path()}); break;
+        case "fsize": canvasContent.push({text:"FSIZE - Changes the current font size. Accepts values between 10 and 30. If empty it resets to default. Syntax: FSIZE [new Size]", isInput:false, inDir:cwd.path()}); break;
+        case "help": canvasContent.push({text:"HELP - prints this page. Syntax: HELP", isInput:false, inDir:cwd.path()}); break;
+        case "mkdir": canvasContent.push({text:"MKDIR - Creates a new folder with the specified name. Syntax: MKDIR [name]", isInput:false, inDir:cwd.path()}); break;
+        case "print": canvasContent.push({text:"PRINT - Prints file contents to the CLI. Syntax: PRINT [file]", isInput:false, inDir:cwd.path()}); break;
+        case "reset": canvasContent.push({text:"RESET - resets the CLI (basically equivalent to reloading). Syntax: RESET", isInput:false, inDir:cwd.path()}); break;
+        case "tree": canvasContent.push({text:"TREE - prints the filesystem structure below CWD. Syntax: TREE", isInput:false, inDir:cwd.path()}); break;
+        default:
+            canvasContent.push({text:"list of available commands:", isInput:false, inDir:cwd.path()});
+            canvasContent.push({text:"CD - Changes the current working directory. Syntax: CD [target directory]", isInput:false, inDir:cwd.path()});
+            canvasContent.push({text:"CLS - Clears the history of the CLI. Syntax: CLS", isInput:false, inDir:cwd.path()});
+            canvasContent.push({text:"COLOR - Clears the colors of the CLI. Syntax: COLOR [colors]", isInput:false, inDir:cwd.path()});
+            canvasContent.push({text:"DIR - Displays contents of cwd. Syntax: DIR", isInput:false, inDir:cwd.path()});
+            canvasContent.push({text:"EXIT - Exits the current CLI. Syntax: EXIT", isInput:false, inDir:cwd.path()});
+            canvasContent.push({text:"FSIZE - Changes the current font size. Accepts values between 10 and 30. If empty it resets to default. Syntax: FSIZE [new Size]", isInput:false, inDir:cwd.path()});
+            canvasContent.push({text:"HELP - prints this page. Syntax: HELP", isInput:false, inDir:cwd.path()});
+            canvasContent.push({text:"MKDIR - Creates a new folder with the specified name. Syntax: MKDIR [name]", isInput:false, inDir:cwd.path()});
+            canvasContent.push({text:"PRINT - Prints file contents to the CLI. Syntax: PRINT [file]", isInput:false, inDir:cwd.path()});
+            canvasContent.push({text:"RESET - resets the CLI (basically equivalent to reloading). Syntax: RESET", isInput:false, inDir:cwd.path()});
+            canvasContent.push({text:"TREE - prints the filesystem structure below CWD. Syntax: TREE", isInput:false, inDir:cwd.path()});
+            currentLine = currentLine+11; //this is only 11 bc there is one more currentLine right after the switch
+        break;
+    }
+    currentLine++; //updates all the single line cases
 }
 
 function shellMkdir(name){
     let cwdBackup = cwd;
-    let tmp = name.split("\\");
-    tmp.forEach((name, key) => {
-        if(key<tmp.length-1){
-            let child = cwd.getChild(key);
-            if(name === "..") child = cwd.parent;
-            if(!child){
-                canvasContent.push({text: "folder does not exist", isInput:false, inDir:cwd.path()});
-                currentLine++;
+    if(name == undefined || name.length == 0){
+        shellHelp("mkdir");
+    } else{
+        let tmp = name.split("\\");
+        tmp.forEach((name, key) => {
+            if(key<tmp.length-1){
+                let child = cwd.getChild(key);
+                if(name === "..") child = cwd.parent;
+                if(!child){
+                    canvasContent.push({text: "folder does not exist", isInput:false, inDir:cwd.path()});
+                    currentLine++;
+                    cwd = cwdBackup;
+                    return false;
+                }else{
+                    cwd = child;
+                }
+            }else{
+                if(cwd.getChild(name)){
+                    canvasContent.push({text: "folder already exists", isInput:false, inDir:cwd.path()});
+                    currentLine++;
+                }else{
+                    cwd.createFolder(name);
+                    canvasContent.push({text: "folder created", isInput:false, inDir:cwd.path()});
+                    currentLine++;
+                }
                 cwd = cwdBackup;
-                return false;
-            }else{
-                cwd = child;
             }
-        }else{
-            if(cwd.getChild(name)){
-                canvasContent.push({text: "folder already exists", isInput:false, inDir:cwd.path()});
-                currentLine++;
-            }else{
-                cwd.createFolder(name);
-                canvasContent.push({text: "folder created", isInput:false, inDir:cwd.path()});
-                currentLine++;
-            }
-            cwd = cwdBackup;
-        }
-    });
+        });
+    }
 }
 
 function shellPrint(file){
     let cwdBackup = cwd;
-    let tmp = file.split("\\");
-    let print = false;
-    tmp.forEach((name, key) => {
-        if(key<tmp.length-1){
-            let child = cwd.getChild(key);
-            if(name === "..") child = cwd.parent;
-            if(child){
-                cwd = child;
+    if(file == undefined || file.length == 0){
+        shellHelp("print");
+    }else{
+        let tmp = file.split("\\");
+        let print = false;
+        tmp.forEach((name, key) => {
+            if(key<tmp.length-1){
+                let child = cwd.getChild(key);
+                if(name === "..") child = cwd.parent;
+                if(child){
+                    cwd = child;
+                }
+            }else{
+                let fileItem = cwd.getChild(name);
+                if(fileItem && fileItem.type === "file"){
+                    fileItem.print();
+                    print = true;
+                }
             }
-        }else{
-            let fileItem = cwd.getChild(name);
-            if(fileItem && fileItem.type === "file"){
-                fileItem.print();
-                print = true;
-            }
+        });
+        if(!print){
+            canvasContent.push({text: "file does not exist", isInput:false, inDir:cwd.path()});
+            currentLine++;
         }
-    });
-    if(!print){
-        canvasContent.push({text: "file does not exist", isInput:false, inDir:cwd.path()});
-        currentLine++;
+        cwd = cwdBackup;
     }
-    cwd = cwdBackup;
 }
 
 
