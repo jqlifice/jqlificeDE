@@ -169,6 +169,11 @@ function loadPage(pageID, reload, inHistory, setURL){
                     }
                 break;
 
+            case "RickRoll":
+                    document.getElementById("contentBoxRickRoll").style.display="flex";
+                    document.getElementById("contentBoxRickRoll").style.visibility="visible";
+                break;
+
             default:
                     document.getElementById("contentBox404").style.display="flex";
                     document.getElementById("contentBox404").style.visibility="visible";
