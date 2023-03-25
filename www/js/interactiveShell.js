@@ -206,7 +206,12 @@ function exec(commandIn){
         case "dir": shellDIR(); break;
         case "exit": document.getElementById("contentBoxClose").click(); break;
         case "fsize": shellFSIZE(args[0]); break;
-        case "help": shellHelp(args[0].toLowerCase()); break;
+        case "help":
+            if(args.length==0){
+                shellHelp();
+            }else{
+                shellHelp(args[0].toLowerCase());
+            } break;
         case "mkdir": case "md": shellMkdir(args[0]); break;
         case "print": shellPrint(args[0]); break;
         case "cmd": case "reset": loadVariableBaseValues(); shellCLS(); break;
