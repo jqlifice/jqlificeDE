@@ -56,18 +56,6 @@ document.getElementById("sliderYoutube").onclick = function (){
 document.getElementById("sliderProgram").onclick = function (){
     loadPage("Program", false, false);
 };
-document.getElementById("sliderCSGO").onclick = function (){
-    loadPage("CSGO", false, false);
-};
-document.getElementById("sliderYugi").onclick = function (){
-    loadPage("Yugi", false, false);
-};
-document.getElementById("sliderGaming").onclick = function (){
-    loadPage("Gaming", false, false);
-};
-document.getElementById("sliderMusic").onclick = function (){
-    loadPage("Music", false, false);
-};
 document.getElementById("sliderCredits").onclick = function (){
     loadPage("Credits", false, false);
 };
@@ -167,11 +155,6 @@ function loadPage(pageID, reload, inHistory, setURL){
                         document.getElementById("contentBoxPlay").style.display="grid";
                         document.getElementById("contentBoxPlay").style.visibility="visible";
                     }
-                break;
-
-            case "RickRoll":
-                    document.getElementById("contentBoxRickRoll").style.display="flex";
-                    document.getElementById("contentBoxRickRoll").style.visibility="visible";
                 break;
 
             default:
